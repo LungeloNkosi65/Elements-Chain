@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <base href="">
+    <!-- <script src="./assets/custom-home-element.js"></script> -->
+    <script src="./assets/home-element.js"></script>
+</head>
+
+<body>
+    <div>
+        <input type="text" placeholder="Type value..." id="myInput1">
+        <button type="button" onclick="getInputValue();">Insert Value</button>
+        <subtraction-custom id="elementid"></subtraction-custom>
+
+    </div>
+
+    <script src="" async defer></script>
+
+</body>
+<script>
+    const Button = document.querySelector('subtraction-custom');
+    Button.addEventListener('action', (event) => {
+        console.log(`"action": emitted:${event.detail}`)
+    });
+    function getInputValue() {
+       
+        document.getElementById('elementid').setAttribute("firstvalue", getTextBoxValue('myInput1'))
+    }
+
+    function getTextBoxValue(textBoxId) {
+        return document.getElementById(textBoxId).value;
+    }
+</script>
+
+</html>
