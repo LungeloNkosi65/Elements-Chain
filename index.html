@@ -11,13 +11,20 @@
     <base href="">
     <!-- <script src="./assets/custom-home-element.js"></script> -->
     <script src="./assets/home-element.js"></script>
+    <script src="./assets/power.js"></script>
+    <script src="./assets/squareroot.js"></script>
+    <script src="./assets/divided-element.js"></script>
 </head>
 
 <body>
     <div>
         <input type="text" placeholder="Type value..." id="myInput1">
         <button type="button" onclick="getInputValue();">Insert Value</button>
+
         <subtraction-custom id="elementid"></subtraction-custom>
+        <app-power id="custompower"></app-power>
+        <custom-square-root id="sqrtComponent"></custom-square-root>
+        <element-divide id ="divideElement"></element-divide>
 
     </div>
 
@@ -25,10 +32,29 @@
 
 </body>
 <script>
-    const Button = document.querySelector('subtraction-custom');
-    Button.addEventListener('action', (event) => {
-        console.log(`"action": emitted:${event.detail}`)
+    const subtractor = document.querySelector('subtraction-custom');
+    subtractor.addEventListener('action', (event) => {
+        console.log(`"Subtraction event": emitted:${event.detail}`)
+        document.getElementById('custompower').setAttribute("inputvalue",event.detail);
     });
+
+    const pow = document.querySelector('app-power');
+    pow.addEventListener('result',(event) =>{
+      console.log(`"Power event" emitted: ${event.detail}`);
+      document.getElementById('sqrtComponent').setAttribute("inputvalue",event.detail);
+    });
+
+    const squareroot=document.getElementById('sqrtComponent');
+    squareroot.addEventListener('result',(event) =>{
+    console.log(`"sqaure root" emitted: ${event.detail}`); 
+    document.getElementById('divideElement').Num1=event.detail;
+     });
+
+     const devide= document.getElementById('divideElement');
+     devide.addEventListener('output',(event)=>{
+     console.log(`"output": emitted:${event.detail}`)
+    });
+
     function getInputValue() {
        
         document.getElementById('elementid').setAttribute("firstvalue", getTextBoxValue('myInput1'))
